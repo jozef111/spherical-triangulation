@@ -47,7 +47,6 @@ function contains(points, center, vertices, p) {
     v[i] = points[vertices[i]]
   }
   v[d] = center
-  var o = orient.apply(undefined, v)
   for(var i=0; i<d; ++i) {
     var x = v[i]
     v[i] = p
@@ -110,13 +109,14 @@ proto.locate = function(p) {
   var n = this
   var points = this.points
   var center = this.center
+locate_loop:
   while(n._children) {
     var children = n._children
     for(var i=0,m=children.length; i<m; ++i) {
       var c = children[i]
       if(contains(points, center, c.vertices, p)) {
         n = c
-        break
+        continue locate_loop
       }
     }
     return []
@@ -163,6 +163,12 @@ function createSphericalTriangulation(simplex) {
     }
     center[i] = v
   }
+
+  var o = s > 0
+  if(d & 1) {
+    o = !o
+  }
+
   //Initialize triangulation
   var triangles = new SphericalTriangulation(center, simplex.slice())
   for(var i=0; i<=d; ++i) {
@@ -174,7 +180,7 @@ function createSphericalTriangulation(simplex) {
     for(var j=i+1; j<=d; ++j) {
       f[k++] = j
     }
-    if((s < 0) !== !!(i&1)) {
+    if(o !== !!(i&1)) {
       var tmp = f[0]
       f[0] = f[1]
       f[1] = tmp

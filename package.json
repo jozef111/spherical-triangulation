@@ -1,0 +1,41 @@
+{
+  "name": "spherical-triangulation",
+  "version": "1.0.0",
+  "description": "Maintain a spherical triangulation under incremental vertex insertions",
+  "main": "st.js",
+  "directories": {
+    "example": "example"
+  },
+  "dependencies": {
+    "dup": "^1.0.0",
+    "robust-orientation": "^1.1.1",
+    "robust-sum": "^1.0.0"
+  },
+  "devDependencies": {
+    "simplicial-complex": "~1.0.0",
+    "gl-simplicial-complex": "~1.0.0",
+    "game-shell-orbit-camera": "~0.0.2",
+    "gl-axes": "~2.0.1",
+    "gl-matrix": "~2.1.0",
+    "gl-now": "~1.3.1",
+  },
+  "scripts": {
+    "test": "tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mikolalysenko/spherical-triangulation.git"
+  },
+  "keywords": [
+    "spherical",
+    "triangulation",
+    "incremental",
+    "vertex"
+  ],
+  "author": "Mikola Lysenko",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mikolalysenko/spherical-triangulation/issues"
+  },
+  "homepage": "https://github.com/mikolalysenko/spherical-triangulation"
+}
